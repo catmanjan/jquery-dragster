@@ -1,9 +1,4 @@
-jQuery Dragster
-===============
-
-## Usage
-
-Include jquery.dragster.js in page.
+Include [jquery.dragster.js](https://rawgithub.com/catmanjan/jquery-dragster/master/jquery.dragster.js) in page.
 
 Works in IE.
 
