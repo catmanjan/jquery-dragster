@@ -11,21 +11,21 @@
                 second = false;
 
             $(this).on('dragenter', function () {
-                if (this.first) {
-                    return this.second = true;
+                if (first) {
+                    return second = true;
                 } else {
-                    this.first = true;
+                    first = true;
                     $(this).trigger('dragster:enter');
                 }
             });
 
             $(this).on('dragleave', function () {
-                if (this.second) {
-                    this.second = false;
-                } else if (this.first) {
-                    this.first = false;
+                if (second) {
+                    second = false;
+                } else if (first) {
+                    first = false;
                 }
-                if (!this.first && !this.second) {
+                if (!first && !second) {
                     $(this).trigger('dragster:leave');
                 }
             });
