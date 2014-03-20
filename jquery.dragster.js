@@ -2,36 +2,37 @@
 
     $.fn.dragster = function (options) {
         var settings = $.extend({
-            enter: function () { },
-            leave: function () { }
+            enter: $.noop,
+            leave: $.noop
         }, options);
 
         return this.each(function () {
             var first = false,
-                second = false;
+                second = false,
+                $this = $(this);
 
-            $(this).on('dragenter', function () {
-                if (this.first) {
-                    return this.second = true;
-                } else {
-                    this.first = true;
-                    $(this).trigger('dragster:enter');
-                }
+            $this.on({
+                dragenter: function () {
+                    if (first) {
+                        return second = true;
+                    } else {
+                        first = true;
+                        $this.trigger('dragster:enter');
+                    }
+                }, 
+                dragleave: function () {
+                    if (second) {
+                        second = false;
+                    } else if (first) {
+                        first = false;
+                    }
+                    if (!first && !second) {
+                        $this.trigger('dragster:leave');
+                    }
+                },
+                'dragster:enter': settings.enter,
+                'dragster:leave': settings.leave
             });
-
-            $(this).on('dragleave', function () {
-                if (this.second) {
-                    this.second = false;
-                } else if (this.first) {
-                    this.first = false;
-                }
-                if (!this.first && !this.second) {
-                    $(this).trigger('dragster:leave');
-                }
-            });
-
-            $(this).on('dragster:enter', settings.enter);
-            $(this).on('dragster:leave', settings.leave);
         });
     };
 
