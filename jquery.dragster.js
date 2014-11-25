@@ -3,7 +3,8 @@
     $.fn.dragster = function (options) {
         var settings = $.extend({
             enter: $.noop,
-            leave: $.noop
+            leave: $.noop,
+            over: $.noop
         }, options);
 
         return this.each(function () {
@@ -12,26 +13,32 @@
                 $this = $(this);
 
             $this.on({
-                dragenter: function () {
+                dragenter: function (event) {
                     if (first) {
                         return second = true;
                     } else {
                         first = true;
-                        $this.trigger('dragster:enter');
+                        $this.trigger('dragster:enter', event);
                     }
-                }, 
-                dragleave: function () {
+                    event.preventDefault();
+                },
+                dragleave: function (event) {
                     if (second) {
                         second = false;
                     } else if (first) {
                         first = false;
                     }
                     if (!first && !second) {
-                        $this.trigger('dragster:leave');
+                        $this.trigger('dragster:leave', event);
                     }
+                    event.preventDefault();
+                },
+                dragover: function (event) {
+                    event.preventDefault();
                 },
                 'dragster:enter': settings.enter,
-                'dragster:leave': settings.leave
+                'dragster:leave': settings.leave,
+                'dragster:over': settings.over
             });
         });
     };
