@@ -34,6 +34,7 @@
                     event.preventDefault();
                 },
                 dragover: function (event) {
+                    $this.trigger('dragster:over', event);
                     event.preventDefault();
                 },
                 'dragster:enter': settings.enter,
