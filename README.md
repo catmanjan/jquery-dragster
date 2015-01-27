@@ -4,10 +4,10 @@ Works in IE.
 
 ```javascript
 $('.element').dragster({
-	enter: function () {
+	enter: function (dragsterEvent, event) {
 		$(this).addClass('hover');
 	},
-	leave: function () {
+	leave: function (dragsterEvent, event) {
 		$(this).removeClass('hover');
 	}
 });

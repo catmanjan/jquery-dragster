@@ -12,22 +12,22 @@
                 $this = $(this);
 
             $this.on({
-                dragenter: function () {
+                dragenter: function (event) {
                     if (first) {
                         return second = true;
                     } else {
                         first = true;
-                        $this.trigger('dragster:enter');
+                        $this.trigger('dragster:enter', event);
                     }
-                }, 
-                dragleave: function () {
+                },
+                dragleave: function (event) {
                     if (second) {
                         second = false;
                     } else if (first) {
                         first = false;
                     }
                     if (!first && !second) {
-                        $this.trigger('dragster:leave');
+                        $this.trigger('dragster:leave', event);
                     }
                 },
                 'dragster:enter': settings.enter,
