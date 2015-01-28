@@ -20,10 +20,7 @@
                         first = true;
                         $this.trigger('dragster:enter', event);
                     }
-<<<<<<< HEAD
-=======
                     event.preventDefault();
->>>>>>> pr/4
                 },
                 dragleave: function (event) {
                     if (second) {
