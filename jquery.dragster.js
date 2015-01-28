@@ -3,7 +3,8 @@
     $.fn.dragster = function (options) {
         var settings = $.extend({
             enter: $.noop,
-            leave: $.noop
+            leave: $.noop,
+            over: $.noop
         }, options);
 
         return this.each(function () {
@@ -19,6 +20,10 @@
                         first = true;
                         $this.trigger('dragster:enter', event);
                     }
+<<<<<<< HEAD
+=======
+                    event.preventDefault();
+>>>>>>> pr/4
                 },
                 dragleave: function (event) {
                     if (second) {
@@ -29,9 +34,15 @@
                     if (!first && !second) {
                         $this.trigger('dragster:leave', event);
                     }
+                    event.preventDefault();
+                },
+                dragover: function (event) {
+                    $this.trigger('dragster:over', event);
+                    event.preventDefault();
                 },
                 'dragster:enter': settings.enter,
-                'dragster:leave': settings.leave
+                'dragster:leave': settings.leave,
+                'dragster:over': settings.over
             });
         });
     };
