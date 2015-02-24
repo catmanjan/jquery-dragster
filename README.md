@@ -9,6 +9,9 @@ $('.element').dragster({
 	},
 	leave: function (dragsterEvent, event) {
 		$(this).removeClass('hover');
+	},
+	drop: function (dragsterEvent, event) {
+		$(this).removeClass('hover');
 	}
 });
 ```
