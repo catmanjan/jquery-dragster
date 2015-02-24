@@ -4,7 +4,8 @@
         var settings = $.extend({
             enter: $.noop,
             leave: $.noop,
-            over: $.noop
+            over: $.noop,
+            drop: $.noop
         }, options);
 
         return this.each(function () {
@@ -37,9 +38,21 @@
                     $this.trigger('dragster:over', event);
                     event.preventDefault();
                 },
+                drop: function (event) {
+                    if (second) {
+                        second = false;
+                    } else if (first) {
+                        first = false;
+                    }
+                    if (!first && !second) {
+                        $this.trigger('dragster:drop', event);
+                    }
+                    event.preventDefault();
+                },
                 'dragster:enter': settings.enter,
                 'dragster:leave': settings.leave,
-                'dragster:over': settings.over
+                'dragster:over': settings.over,
+                'dragster:drop': settings.drop
             });
         });
     };
