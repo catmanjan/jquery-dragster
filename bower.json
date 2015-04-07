@@ -1,0 +1,26 @@
+{
+  "name": "jquery-dragster",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Teleborder/jquery-dragster",
+  "authors": [
+    "catmanjan",
+    "bensmithett"
+  ],
+  "description": "Unified drag and drop listener",
+  "main": "jquery.dragster.js",
+  "keywords": [
+    "jquery",
+    "dragster",
+    "dragenter",
+    "dragleave",
+    "drop"
+  ],
+  "license": "Unknown",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
