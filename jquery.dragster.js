@@ -40,7 +40,8 @@ SOFTWARE.
             $this.on({
                 dragenter: function (event) {
                     if (first) {
-                        return second = true;
+                        second = true;
+                        return;
                     } else {
                         first = true;
                         $this.trigger('dragster:enter', event);
